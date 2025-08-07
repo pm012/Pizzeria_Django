@@ -25,3 +25,27 @@ admin.site.register(Pizza)
 admin.site.register(Topping)
 ```
 
+Create home page:
+1. Create pizzas/urls.py 
+```python
+#"""Define URL patterns for pizzas app."""
+from django.urls import path
+from . import views
+
+app_name = 'pizzas'
+urlpatterns = [
+    #Home page
+    path('', views.index, name='index'),
+]
+```
+2. Add ```python  path('', include('pizzas.urls')),  # Include URLs from the pizzas app ``` to ulrpatterns in pizzeria/urls.py
+3. Add method returning render of index.html page in views page 
+```python
+def index(request):
+    """The page for pizzeria"""
+    return render(request, 'pizzas/index.html')
+    ```
+4. Create pizzas/template/index.html file
+
+
+
