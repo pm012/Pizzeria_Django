@@ -1,0 +1,15 @@
+{% extends 'pizzas/base.html' %}
+
+{% block content %}
+<p>Pizza: {{ pizza }}</p>
+<p>Ingridients: </p>
+<ul>
+    {% for ingredient in pizza.ingredients.all %}
+        <li>{{ ingredient.name }}</li>
+    {% empty %}
+        <li>No ingredients available.</li>
+    {% endfor %}
+</ul>
+<p>Price: {{ pizza.price }}</p>
+<p><a href="{% url 'pizzas:pizzas' %}">Back to Pizzas</a></p>
+{% endblock content %}
